@@ -1,6 +1,6 @@
 <template>
     <div class="login-container">
-        <v-form v-model="loginForm" class="login-form" >
+        <v-form class="login-form" >
             <div class="title-container">
                 <h3 class="title1">OBS Login</h3>
             </div>
@@ -25,20 +25,27 @@ export default {
     },
     methods:{
         login() {
-            let _this = this
+            //let _this = this
             this.$axios
-                .get('https://qc5wyz.fn.thelarkcloud.com/loginVerify',{
-                    param: {
-                        username: this.loginForm.username,
-                        password: this.loginForm.password
-                    }
+                .post('https://qc5wyz.fn.thelarkcloud.com/loginVerify',{
+                    // loginForm:{
+                    //     username: "admin",
+                    //     password: "123456"
+                    //}
+                    username: this.loginForm.username,
+                    password: this.loginForm.password
+                    // params:{
+                    //     username: this.loginForm.username,
+                    //     //password: this.loginForm.password
+                    // }
+                    //get貌似只能传单参
                 })
                 .catch((error) => {
                     console.log(error)
                 })
-                .then((response) => {
-                    console.log(response);
-                    if(response.data.password === _this.loginForm.password){
+                .then((successResponse) => {
+                    console.log(successResponse);
+                    if(successResponse.data.code === 200){
                         this.$router.replace({name: 'Home'})
                     }
                 })

@@ -1,11 +1,11 @@
 <template>
     <div class="login-container">
-        <v-form class="login-form" >
+        <v-form ref="form" class="login-form" lazy-validation>
             <div class="title-container">
                 <h3 class="title1">OBS Login</h3>
             </div>
             <v-text-field v-model="loginForm.username" label="Username" Required/>
-            <v-text-field v-model="loginForm.password" label="Password" Required/>
+            <v-text-field v-model="loginForm.password" label="Password" type="password" Required/>
             <v-btn color="success" rounded width="200" style=" display:block; margin: 20px auto" v-on:click="login">Login</v-btn>
         </v-form>
     </div>

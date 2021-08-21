@@ -88,18 +88,14 @@
         </v-row>
       </v-col>
     </v-row>
-      <BottomNavigation/>
   </v-container>
 </template>
 
 <script>
-  import BottomNavigation from "@/components/commen/BottomNavigation";
 
   export default {
     name: 'HelloWorld',
-    components:{
-      BottomNavigation,
-    },
+    components:{},
     data: () => ({
       ecosystem: [
         {
